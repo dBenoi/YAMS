@@ -1,0 +1,19 @@
+<%- layout('layouts/boilerplate') %>
+
+  <h1>
+    <%= title.client %>
+  </h1>
+
+  <% for(let asset of assets) { %>
+    <div class="card w-75">
+      <div class="card-body">
+        <h5 class="card-title">
+          <%= asset.ipAddress %>
+        </h5>
+        <p class="card-text">Device Type: <%= asset.deviceType %>
+            Location: <%= asset.location %>
+        </p>
+        <a href="#" class="btn btn-primary">Button</a>
+      </div>
+    </div>
+    <% } %>

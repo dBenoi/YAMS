@@ -1,0 +1,19 @@
+{
+  "name": "ipapp",
+  "version": "1.0.0",
+  "description": "Asset inventory application for IP addresses at customer locations",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "David Benoit",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "ejs-mate": "^3.0.0",
+    "express": "^4.17.1",
+    "method-override": "^3.0.0",
+    "mongoose": "^6.0.4",
+    "morgan": "^1.10.0"
+  }
+}
