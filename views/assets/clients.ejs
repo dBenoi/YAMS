@@ -5,16 +5,23 @@
   </h1>
 
   <% for(let asset of assets) { %>
-    <div class="card w-75">
-      <div class="card-body d-flex row">
-        <h5 class="card-title col-md-6">
-          <%= asset.ipAddress %> 
-        </h5>
-        <p class="d-inline col-md-6"> <b>Location: </b> <%= asset.location %></p>
-        <p class="card-text"><b> Device Type: </b><%= asset.deviceType %>
-            
-        </p>
-        <a href="#" class=" col-md-2 btn btn-primary">Button</a>
+    <div class="card w-md-75 w-100 mb-2">
+      <div class="card-body  ">
+        <div class="bg-light d-flex row mb-2">
+          <h5 class="card-title col-md-4">
+            <%= asset.ipAddress %>
+          </h5>
+          <p class="card-text col-md-4"> <b>Location: </b>
+            <%= asset.location %>
+          </p>
+          <p class="card-text col-md-4"><b> Device Type: </b>
+            <%= asset.deviceType %>
+          </p>
+        </div>
+        <div d-flex row>
+          <a href="#" class=" btn btn-primary col-md-1">View</a>
+          <a href="#" class="btn btn-warning col-md-1">Edit</a>
+        </div>
       </div>
     </div>
     <% } %>
