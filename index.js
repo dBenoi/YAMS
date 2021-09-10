@@ -41,18 +41,18 @@ app.get('/assets/clientList', (req, res) => {
 //render sbphtd asset list
 app.get('/assets/clients/sbphtd', async (req, res) => {
     const title = await Asset.findOne({ 'client': 'SBPHTD' });
-    const assets = await Asset.find({ 'client': 'SBPHTD' });
+    const assets = await Asset.find({ 'client': 'SBPHTD' }).sort({ ipAddress: 1 }).collation({ locale: "en_US", numericOrdering: true });
     res.render('assets/clients', { assets, title })
 })
 
 app.get('/assets/clients/pphtd', async (req, res) => {
-    const assets = await Asset.find({ 'client': 'PPHTD' });
+    const assets = await Asset.find({ 'client': 'PPHTD' }).sort({ ipAddress: 1 }).collation({ locale: "en_US", numericOrdering: true });
     res.render('assets/clients', { assets })
 })
 
 app.get('/assets/clients/posla', async (req, res) => {
     const title = await Asset.findOne({ 'client': 'POSLA' });
-    const assets = await Asset.find({ 'client': 'POSLA' });
+    const assets = await Asset.find({ 'client': 'POSLA' }).sort({ ipAddress: 1 }).collation({ locale: "en_US", numericOrdering: true });
     res.render('assets/clients', { assets, title })
 })
 
