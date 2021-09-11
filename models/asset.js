@@ -6,7 +6,8 @@ const assetSchema = new Schema({
         type: String,
         required: true
     },
-    imageLink: String,
+    image: String,
+    deviceUrl: String,
     deviceType: String,
     description: String,
     model: String,
