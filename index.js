@@ -63,6 +63,12 @@ app.post('/assets', async (req, res) => {
     res.redirect('/')
 })
 
+app.get('/assets/:id', async (req, res) => {
+    const { id } = req.params;
+    const asset = await Asset.findById(id);
+    res.render('assets/show', { asset })
+})
+
 //base code for new Client lists
 // app.get('/assets/clients', async (req, res) => {
 //     const assets = await Asset.find({ 'client': 'SBPHTD' });
