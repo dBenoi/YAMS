@@ -7,8 +7,10 @@ MERN stack web application designed for network admins to use for asset manageme
 ## Tech Used
 
 - EJS
+- Node.js
 - MongoDB/Mongoose
 - JS
+- Express
 - CSS/Bootstrap
 
 ## Coming Features
