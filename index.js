@@ -29,6 +29,8 @@ app.get('/', (req, res) => {
     res.render('home')
 })
 
+const clients = ['SBPHTD', 'PPHTD', 'POSLA']
+
 //get request for new asset form
 app.get('/assets/new', (req, res) => {
     res.render('assets/new')
@@ -61,6 +63,30 @@ app.post('/assets', async (req, res) => {
     const asset = new Asset(req.body.asset);
     await asset.save();
     res.redirect('/')
+})
+
+app.get('/assets/:id', async (req, res) => {
+    const { id } = req.params;
+    const asset = await Asset.findById(id);
+    res.render('assets/show', { asset })
+})
+
+app.get('/assets/:id/edit', async (req, res) => {
+    const { id } = req.params;
+    const asset = await Asset.findById(id);
+    res.render('assets/edit', { asset, clients })
+})
+
+app.put('/assets/:id', async (req, res) => {
+    const { id } = req.params;
+    const asset = await Asset.findByIdAndUpdate(id, req.body, { runValidators: true })
+    res.redirect(`/assets/${asset._id}`)
+})
+
+app.delete('/assets/:id', async (req, res) => {
+    const { id } = req.params;
+    const deletedAsset = await Asset.findByIdAndDelete(id)
+    res.redirect('/assets/clients')
 })
 
 //base code for new Client lists

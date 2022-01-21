@@ -1,0 +1,69 @@
+<%- layout('layouts/boilerplate') %> <% if (asset.imageLink == 'true') { %>
+<div class="card mb-3">
+  <img src="<% asset.image %> " class="card-img-top" alt="..." />
+  <div class="card-body">
+    <h5 class="card-title"></h5>
+    <p class="card-text">
+      This is a wider card with supporting text below as a natural lead-in to
+      additional content. This content is a little bit longer.
+    </p>
+    <p class="card-text">
+      <small class="text-muted">Last updated 3 mins ago</small>
+    </p>
+  </div>
+</div>
+<% } else {%>
+<div class="card mb-3">
+  <div class="card-header display-6 fw-bold"><%= asset.ipAddress %></div>
+  <div class="card-body d-flex row justify-content-between">
+    <span class="card-text h5 d-block col-md-auto"
+      >Device Type: <%= asset.deviceType %></span
+    >
+    <span class="card-text h5 d-block col-md-auto"
+      >Model: <%= asset.model %></span
+    >
+    <span class="card-text h5 d-block col-md-auto"
+      >Location: <%= asset.location %></span
+    >
+  </div>
+
+  <div class="card-body">
+    <p class="card-text"><b>Description: </b><%= asset.description %></p>
+    <p class="card-text">
+      <b>Connected Switch:</b> <%= asset.attachedSwitch %> <b>Port #: </b><%=
+      asset.portNumber %>
+    </p>
+    <div class="row justify-content-between">
+      <p class="card-text col-md-6">
+        <small class="text-muted">MAC Address: <%= asset.macAddress %></small>
+      </p>
+      <p class="card-text col-md-6">
+        <small class="text-muted">Serial Number: <%= asset.serial %></small>
+      </p>
+    </div>
+  </div>
+  <div class="card-footer bg-light no-wrap">
+    <a
+      href="/assets/<%= asset._id%>/edit"
+      class="btn btn-warning px-3 col-auto col-lg-2"
+      >Edit</a
+    >
+    <a
+      href="/assets/<%= asset._id %>/delete "
+      class="btn btn-danger px-3 col-sm-auto col-lg-2"
+      >Delete</a
+    >
+      <a
+        href="<%= asset.deviceUrl %> "
+        class="btn btn-success px-3 col-sm-auto col-lg-2"
+        >Re-order</a
+      >
+    </form>
+  </div>
+</div>
+
+<div class="mx-3">
+  <h4>Extra Notes:</h4>
+  <p><%= asset.notes %></p>
+</div>
+<% } %>

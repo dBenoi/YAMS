@@ -1,0 +1,76 @@
+<%- layout('layouts/boilerplate') %>
+
+  <div class="row">
+    <h1 class="text-center">Edit <%= asset.ipAddress %>
+    </h1>
+    <div class="col-8 offset-2">
+      <form action="/assets/<%= asset._id %>?_method=PUT" method="POST">
+        <section class="mb-3">
+          <label class="form-label" for="ipAddress">IP Address</label>
+          <input class="form-control" type="text" id="ipAddress" value="<%= asset.ipAddress %>"
+            name="asset[ipAddress]" />
+        </section>
+        <div class="row">
+          <section class="mb-3 col-md-6">
+            <label class="form-label" for="deviceType">Device Type</label>
+            <input class="form-control" type="text" id="deviceType" value="<%= asset.deviceType %>"
+              name="asset[deviceType]" [deviceType] />
+          </section>
+          <section class="mb-3 col-md-6">
+            <label class="form-label" for="model">Model</label>
+            <input class="form-control" type="text" id="model" value="<%= asset.model %>" name="asset[model]" />
+          </section>
+        </div>
+        <div class="row">
+          <section class="mb-3 col-md-6">
+            <label class="form-label" for="client">Client</label>
+            <select class="form-select" name="asset[client]" id="asset" required>
+              <option value="SBPHTD">SBPHTD</option>
+              <option value="PPHTD">PPHTD</option>
+              <option value="POSLA">POSLA</option>
+            </select>
+          </section>
+          <section class="mb-3 col-md-6">
+            <label class="form-label" for="location">Location</label>
+            <input class="form-control" type="text" id="location" value="<%= asset.location %>"
+              name="asset[location]" />
+          </section>
+        </div>
+        <section class="mb-3">
+          <label class="form-label" for="description">Description</label>
+          <input class="form-control" type="text" id="description" name="asset[description]"
+            value="<%= asset.description %>" />
+        </section>
+        <div class="row g-3">
+          <section class="mb-3 col-md-6">
+            <label class="form-label" for="attachedSwitch">Attached Switch</label>
+            <input class="form-control" type="text" id="attachedSwitch" value="<%= asset.attachedSwitch %>"
+              name="asset[attachedSwitch]" />
+          </section>
+          <section class="mb-3 col-md-6">
+            <label class="form-label" for="portNumber">Port Number</label>
+            <input class="form-control" type="number" id="portNumber" value="<%= asset.portNumber %>"
+              name="asset[portNumber]" />
+          </section>
+        </div>
+
+        <section class="mb-3">
+          <label class="form-label" for="macAddress">MAC Address</label>
+          <input class="form-control" type="text" id="macAddress" value="<%= asset.macAddress %>"
+            name="asset[macAddress]" />
+        </section>
+        <section class="mb-3">
+          <label class="form-label" for="serial">Serial Number</label>
+          <input class="form-control" type="text" id="serial" name="asset[serial]" value="<%= asset.serial %>" />
+        </section>
+        <section class="mb-3">
+          <label class="form-label" for="notes">Notes</label>
+          <textarea class="form-control" type="text" id="notes" name="asset[notes]"
+            value="<%= asset.notes %>"></textarea>
+        </section>
+        <div class="mb-3">
+          <button class="btn btn-success">Apply Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
