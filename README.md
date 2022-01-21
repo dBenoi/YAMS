@@ -1,4 +1,4 @@
-# ipApp
+# YAMS - Your Asset Management Solution
 
 ## About
 
