@@ -20,8 +20,32 @@ const assetSchema = new Schema({
         required: true
     },
     location: String,
+    longitude: String,
+    latitude: String,
     notes: String
 
-})
+});
 
-module.exports = mongoose.model('Asset', assetSchema)
+const clientSchema = new Schema({
+    name: {
+        type: String,
+        required: true
+    },
+    description: String,
+    address: {
+        type: String,
+        required: true
+    },
+    network: {
+        type: String,
+        required: true
+    },
+    lastMaint: String
+});
+
+const Asset = mongoose.model('assets', assetSchema);
+const Client = mongoose.model('clients', clientSchema);
+
+module.exports = {
+    Asset, Client
+}

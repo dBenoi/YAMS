@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const Asset = require('./models/asset');
+const { Asset, Client } = require('./models/asset');
 const methodOverride = require('method-override');
 const morgan = require('morgan');
 const engine = require('ejs-mate');
@@ -32,8 +32,8 @@ app.get('/', (req, res) => {
 const clients = ['SBPHTD', 'PPHTD', 'POSLA']
 
 //get request for new asset form
-app.get('/assets/new', (req, res) => {
-    res.render('assets/new')
+app.get('/assets/newDevice', (req, res) => {
+    res.render('assets/newDevice')
 })
 
 app.get('/assets/clientList', (req, res) => {
@@ -65,17 +65,20 @@ app.post('/assets', async (req, res) => {
     res.redirect('/')
 })
 
+//show all assets
 app.get('/assets/:id', async (req, res) => {
     const { id } = req.params;
     const asset = await Asset.findById(id);
     res.render('assets/show', { asset })
 })
 
+//display edit asset form
 app.get('/assets/:id/edit', async (req, res) => {
     const { id } = req.params;
     const asset = await Asset.findById(id);
     res.render('assets/edit', { asset, clients })
 })
+
 
 app.put('/assets/:id', async (req, res) => {
     const { id } = req.params;
@@ -86,7 +89,7 @@ app.put('/assets/:id', async (req, res) => {
 app.delete('/assets/:id', async (req, res) => {
     const { id } = req.params;
     const deletedAsset = await Asset.findByIdAndDelete(id)
-    res.redirect('/assets/clients')
+    res.redirect('/assets/show')
 })
 
 //base code for new Client lists
@@ -95,10 +98,10 @@ app.delete('/assets/:id', async (req, res) => {
 //     res.render('assets/clients', { assets })
 // })
 
-app.get('/locations/:id', async (req, res) => {
-    const campground = await Campground.findById(req.params.id)
-    res.render('campgrounds/show', { campground })
-})
+// app.get('/locations/:id', async (req, res) => {
+//     const campground = await Campground.findById(req.params.id)
+//     res.render('campgrounds/show', { campground })
+// })
 
 
 

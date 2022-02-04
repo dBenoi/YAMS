@@ -1,5 +1,5 @@
 const path = require('path');
-const Asset = require('../models/asset');
+const { Asset, Client } = require('../models/asset');
 
 const mongoose = require('mongoose');
 
@@ -18,8 +18,16 @@ const seedDB = async () => {
         client: 'POSLA',
         deviceType: 'router',
         model: 'Dell Sonicwall'
-    })
+    });
+    const client = new Client({
+        name: 'St. Bernard',
+        description: 'St. Bernard Description',
+        address: 'St. Bernard Address',
+        network: '192.168.0.X'
+
+    });
     await asset.save();
+    await client.save();
 }
 
 seedDB().then(() => {
