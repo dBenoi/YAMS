@@ -1,4 +1,4 @@
-<%- layout('layouts/boilerplate') %> <% if (asset.imageLink == 'true') { %>
+<%- layout('layouts/boilerplate') %> <% if (asset.image == true) { %>
 <div class="card mb-3">
   <img src="<% asset.image %> " class="card-img-top" alt="..." />
   <div class="card-body">
@@ -44,12 +44,12 @@
   </div>
   <div class="card-footer bg-light no-wrap">
     <a
-      href="/assets/<%= asset._id%>/edit"
+      href="/assets/<%= asset.id%>/edit"
       class="btn btn-warning px-3 col-auto col-lg-2"
       >Edit</a
     >
     <a
-      href="/assets/<%= asset._id %>/delete "
+      href="/assets/<%= asset.id %>/delete "
       class="btn btn-danger px-3 col-sm-auto col-lg-2"
       >Delete</a
     >

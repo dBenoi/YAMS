@@ -24,7 +24,6 @@ const seedDB = async () => {
         description: 'St. Bernard Description',
         address: 'St. Bernard Address',
         network: '192.168.0.X'
-
     });
     await asset.save();
     await client.save();
@@ -32,4 +31,5 @@ const seedDB = async () => {
 
 seedDB().then(() => {
     mongoose.connection.close();
+    console.log('Database Connection Closed')
 })

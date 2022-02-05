@@ -15,7 +15,7 @@ const assetSchema = new Schema({
     portNumber: Number,
     macAddress: String,
     serial: String,
-    client: {
+    customer: {
         type: String,
         required: true
     },

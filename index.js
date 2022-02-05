@@ -42,19 +42,20 @@ app.get('/assets/clientList', (req, res) => {
 
 //render sbphtd asset list
 app.get('/assets/clients/sbphtd', async (req, res) => {
-    const title = await Asset.findOne({ 'client': 'SBPHTD' });
-    const assets = await Asset.find({ 'client': 'SBPHTD' }).sort({ ipAddress: 1 }).collation({ locale: "en_US", numericOrdering: true });
+    const title = await Asset.findOne({ 'customer': 'SBPHTD' });
+    const assets = await Asset.find({ 'customer': 'SBPHTD' }).sort({ ipAddress: 1 }).collation({ locale: "en_US", numericOrdering: true });
     res.render('assets/clients', { assets, title })
 })
 
 app.get('/assets/clients/pphtd', async (req, res) => {
-    const assets = await Asset.find({ 'client': 'PPHTD' }).sort({ ipAddress: 1 }).collation({ locale: "en_US", numericOrdering: true });
-    res.render('assets/clients', { assets })
+    const title = await Asset.findOne({ 'customer': 'PPHTD' });
+    const assets = await Asset.find({ 'customer': 'PPHTD' }).sort({ ipAddress: 1 }).collation({ locale: "en_US", numericOrdering: true });
+    res.render('assets/clients', { assets, title })
 })
 
 app.get('/assets/clients/posla', async (req, res) => {
-    const title = await Asset.findOne({ 'client': 'POSLA' });
-    const assets = await Asset.find({ 'client': 'POSLA' }).sort({ ipAddress: 1 }).collation({ locale: "en_US", numericOrdering: true });
+    const title = await Asset.findOne({ 'customer': 'POSLA' });
+    const assets = await Asset.find({ 'customer': 'POSLA' }).sort({ ipAddress: 1 }).collation({ locale: "en_US", numericOrdering: true });
     res.render('assets/clients', { assets, title })
 })
 
@@ -86,9 +87,9 @@ app.put('/assets/:id', async (req, res) => {
     res.redirect(`/assets/${asset._id}`)
 })
 
-app.delete('/assets/:id', async (req, res) => {
+app.delete('/assets/:id/delete', async (req, res) => {
     const { id } = req.params;
-    const deletedAsset = await Asset.findByIdAndDelete(id)
+    const deletedAsset = await Asset.findByIdAndDelete(id);
     res.redirect('/assets/show')
 })
 
